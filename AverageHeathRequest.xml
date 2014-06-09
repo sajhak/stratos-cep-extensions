@@ -47,11 +47,11 @@
 		#window.timeBatch(1 min) select member_id, cluster_id, network_partition_id, avg(value) as member_average_load_average 
 		insert into member_average_load_average_stats 
 		partition by member_health_avg_cluster_partition;
-  	from health_avg_concatinator [health_description == 'memory_consumption'] 
+  	from health_avg_processsor [health_description == 'memory_consumption'] 
 		#window.timeBatch(1 min) select member_id, cluster_id, network_partition_id, avg(value) as member_average_memory_consumption 
 		insert into member_average_memory_consumption_stats 
 		partition by member_health_avg_cluster_partition;
-  	from health_avg_processsor [health_description == 'memory_consumption'] 
+  	from health_avg_concatinator [health_description == 'memory_consumption'] 
 		#window.timeBatch(1 min) select cluster_id, network_partition_id, avg(value) as average_memory_consumption 
 		insert into average_memory_consumption_stats 
 		partition by health_avg_cluster_partition;
